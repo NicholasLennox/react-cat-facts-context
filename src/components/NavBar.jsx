@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router"
 
 // Reusable class function - NavLink passes in { isActive } automatically
 const navLinkClass = ({ isActive }) => "nav-link text-white" + (isActive ? " fw-bold text-warning" : "")

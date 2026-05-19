@@ -7,12 +7,16 @@ const CatFactsContext = createContext(null)
 // { children } = whatever components are nested inside it
 export function CatFactsProvider({ children }) {
 
-    const [favourites, setFavourties] = useState([])
+    const [favourites, setFavourties] = useState(
+        JSON.parse(localStorage.getItem('catFavourites')) || []
+    ) 
 
     // Adds a new fact to the end of the favourites array
     // We use (prev =>) to make sure we always have the latest version of the array
     function addToFavourites(fact) {
-        setFavourties((prev) => [...prev, fact])
+        const updated = [...favourites, fact]
+        localStorage.setItem('catFavourites', JSON.stringify(updated))
+        setFavourties(updated)
     }
 
     return (
